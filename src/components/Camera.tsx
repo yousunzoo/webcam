@@ -12,11 +12,12 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 	const [stream, setStream] = useState<MediaStream | null>(null);
 
 	useEffect(() => {
+		const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
 		if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			const initializeCamera = async () => {
 				try {
 					const mediaStream = await navigator.mediaDevices.getUserMedia({
-						video: { facingMode: { exact: 'environment' } },
+						video: isMobile ? { facingMode: { exact: 'environment' } } : true,
 					});
 					setStream(mediaStream);
 
@@ -25,7 +26,7 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 						videoRef.current.play();
 					}
 				} catch (error) {
-					alert(`'Error accessing camera:', ${error}`);
+					console.error('Error accessing camera:', error);
 				}
 			};
 
@@ -83,7 +84,7 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 				<input
 					id='gallery'
 					type='file'
-					accept='image/*'
+					accept='image/*;capture=camera'
 					className='hidden'
 					ref={inputRef}
 					onChange={handleFileSelect}
