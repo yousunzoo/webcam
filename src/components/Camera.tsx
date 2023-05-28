@@ -25,7 +25,7 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 						videoRef.current.play();
 					}
 				} catch (error) {
-					console.error('Error accessing camera:', error);
+					alert(`'Error accessing camera:', ${error}`);
 				}
 			};
 
