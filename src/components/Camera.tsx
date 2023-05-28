@@ -13,6 +13,7 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 
 	useEffect(() => {
 		const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+		console.log(isMobile);
 		if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
 			const initializeCamera = async () => {
 				try {
