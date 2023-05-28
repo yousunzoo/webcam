@@ -76,7 +76,7 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 	return (
 		<div>
 			<div className='flex items-center w-full h-[400px] bg-black'>
-				<video ref={videoRef} />
+				<video ref={videoRef} autoPlay playsInline />
 			</div>
 			<div className='relative flex w-full pt-12 px-10'>
 				<label htmlFor='gallery' className='block w-[60px] h-[60px] text-5xl'>
