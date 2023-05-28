@@ -81,9 +81,8 @@ const Camera: React.FC<CameraProps> = ({ onCapture }) => {
 				<input
 					id='gallery'
 					type='file'
-					accept='image/*'
+					accept='image/*;capture=camera'
 					className='hidden'
-					capture='environment'
 					ref={inputRef}
 					onChange={handleFileSelect}
 				/>
